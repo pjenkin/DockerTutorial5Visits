@@ -4,7 +4,8 @@ services:
   redis-server:
     image: 'redis'   # make a container using redis image
   node-app:
-    restart: always
+    # restart: always
+    restart: on-failure
     build: . # build from current directory
     ports:
       - "4001:8081" # dash in yml to signify an array

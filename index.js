@@ -2,7 +2,7 @@
 
 const express = require('express');
 const redis = require('redis');
-const process = require('process');     // 5-56 to deliberately ensure crash, for instruction purposes only
+const process = require('process');     // 5-56/57 to deliberately ensure crash, for instruction purposes only
 
 const app = express();
 const client = redis.createClient({
@@ -14,7 +14,7 @@ client.set('visits', 0);    // client - Redis in-memory db
 
 // if request, respond with total number of visits so far
 app.get('/', (request, response) => {
-    process.exit(0);        // 5-56 to deliberately ensure crash, for instruction purposes only
+    process.exit(123);        // 5-56/57 to deliberately ensure crash, for instruction purposes only
     client.get('visits', (err, visits) => {
         response.send('Number of visits is: ' + visits);
         client.set('visits', parseInt(visits) + 1);
