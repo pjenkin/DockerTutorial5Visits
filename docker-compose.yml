@@ -1,8 +1,9 @@
+# Docker course 5-52
 version: '3'   # version of docker compose
 services:
   redis-server:
-    image: redis   # make a container using redis image
+    image: 'redis'   # make a container using redis image
   node-app:
-    image: build . # build from current directory
+    build: . # build from current directory
     ports:
       - "4001:8081" # dash in yml to signify an array
