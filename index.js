@@ -4,7 +4,10 @@ const express = require('express');
 const redis = require('redis');
 
 const app = express();
-const client = redis.createClient();
+const client = redis.createClient({
+    host: 'redis-server',    // would normally be URL here (if not in docker-compose) - else use service name as in yml
+    port: 6379              // 6379 is default Redis port anyway
+});    // 5-53 refer to redis container as defined as service in docker-compose yml
 
 client.set('visits', 0);    // client - Redis in-memory db
 
